@@ -23,7 +23,7 @@ SELECT USERNAME FROM DBA_USERS;
 ```
 
 # 4. 다음 조건을 만족하는 쿼리문을 작성하세요. (10점)
--계정을 생성하는 권한을 주는 쿼리문 작성하기
+- 계정을 생성하는쿼리문 작성하기
 
 ```SQL
 (1) baby identified by baby;
@@ -93,7 +93,7 @@ CREATE TABLE employees_demo
 ```sql
 CREATE VIEW clerk AS
  SELECT employee_id, last_name, department_id, job_id
- FROM employees WHERE job_id IN ( 'PU_CLERK' ,'SH_CLERK' , job_id = 'ST_CLERK');
+ FROM employees WHERE job_id IN ( 'PU_CLERK' ,'SH_CLERK');
 ```
 
 
