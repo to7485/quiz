@@ -94,7 +94,19 @@ CREATE TABLE employees_demo
 CREATE VIEW clerk AS
  SELECT employee_id, last_name, department_id, job_id
  FROM employees WHERE job_id IN ( 'PU_CLERK' ,'SH_CLERK');
+
+또는
+
+CREATE VIEW clerk AS
+(
+    SELECT employee_id, last_name, department_id, job_id
+    FROM employees
+    WHERE job_id IN ('PU_CLERK', 'SH_CLERK')
+);
+
 ```
+
+
 
 
 
