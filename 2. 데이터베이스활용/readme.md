@@ -51,7 +51,7 @@ PRICE = PRICE + 20
 WHERE NO = 1000;
 ```
 
-## 4. PRODUCT 테이블에서 다음 조건을 만족하는 데이터를 삭제하시오.
+# 4. PRODUCT 테이블에서 다음 조건을 만족하는 데이터를 삭제하시오.
 ```
 << 조건 >>
 
@@ -64,7 +64,7 @@ DELETE FROM PRODUCT
 WHERE NAME = '세탁기';
 ```
 
-## 5. PRODUCT 테이블에서 다음과 같이 데이터를 조회하시오.
+# 5. PRODUCT 테이블에서 다음과 같이 데이터를 조회하시오.
 
 ![image](image/PRODUCT1.png)
 
@@ -74,12 +74,34 @@ SELECT NAME, PRICE
 FROM PRODUCT
 ```
 
-# 6. 테이블에 삽입, 수정, 삭제된 내용을 실제로 DB에 반영하는 쿼리문을 작성하시오.
+# 6. PRODUCT테이블에서 다음 조건을 만족하는 데이터를 조회하시오.
+### 조건
+- 모든 레코드와 칼럼을 PRICE가 높은순으로 정렬하여 조회하시오
+
+### 정답
+```SQL
+SELECT * FROM PRODUCT ORDER BY PRICE DESC;
+```
+
+# 7. PRODUCT테이블에서 다음 조건을 만족하는 데이터를 조회하시오.
+### 조건
+- P_DTAE 별로 그룹화 하여 P_DATE별로 생산된 제품의 평균가격을 조회하시오.
+- 평균가격과 P_DATE칼럼을 함께 조회하시오
+
+## 정답
+```SQL
+SELECT P_DATE, AVG(PRICE)
+FROM PRODUCT
+GROUP BY P_DATE;
+```
+
+
+# 8. 테이블에 삽입, 수정, 삭제된 내용을 실제로 DB에 반영하는 쿼리문을 작성하시오.
 ### 정답
 ```SQL
 COMMIT;
 ```
-# 7. 테이블에 삽입, 수정, 삭제된 내용을 취소하는 쿼리문을 작성하시오.
+# 9. 테이블에 삽입, 수정, 삭제된 내용을 취소하는 쿼리문을 작성하시오.
 ### 정답
 ```SQL
 ROLLBACK;
