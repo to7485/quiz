@@ -23,7 +23,21 @@ P_DATE DATE
 );
 ```
 
-# 2. PRODUCT 테이블에서 다음 조건을 만족하는 데이터의 정보를 수정하시오.
+# 2. PRODUCT테이블에서 NO 칼럼에 활용할 시퀀스를 작성하시오.
+- 시퀀스의 이름과 속성은 알아서 처리하시오
+- 증가량은 1이다.
+- 시작값은 1000이다
+- 캐시를 사용하지 않는다.
+
+### 정답
+```SQL
+CREATE SEQUENCE PRODUCT_SEQ
+INCREMENT BY 1
+START WITH 1000
+NOCACHE;
+```
+
+# 3. PRODUCT 테이블에서 다음 조건을 만족하는 데이터의 정보를 수정하시오.
 ```
 << 조건 >>
 
@@ -37,7 +51,7 @@ PRICE = PRICE + 20
 WHERE NO = 1000;
 ```
 
-## 3. PRODUCT 테이블에서 다음 조건을 만족하는 데이터를 삭제하시오.
+## 4. PRODUCT 테이블에서 다음 조건을 만족하는 데이터를 삭제하시오.
 ```
 << 조건 >>
 
@@ -50,12 +64,26 @@ DELETE FROM PRODUCT
 WHERE NAME = '세탁기';
 ```
 
-## 4. 5. PRODUCT 테이블에서 다음과 같이 데이터를 조회하시오.
+## 5. PRODUCT 테이블에서 다음과 같이 데이터를 조회하시오.
 
+![image](image/PRODUCT1.png)
 
+### 정답
+```sql
+SELECT NAME, PRICE
+FROM PRODUCT
+```
 
-
-
+# 6. 테이블에 삽입, 수정, 삭제된 내용을 실제로 DB에 반영하는 쿼리문을 작성하시오.
+### 정답
+```SQL
+COMMIT;
+```
+# 7. 테이블에 삽입, 수정, 삭제된 내용을 취소하는 쿼리문을 작성하시오.
+### 정답
+```SQL
+ROLLBACK;
+```
 
 
 
