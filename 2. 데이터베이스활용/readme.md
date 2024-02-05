@@ -88,6 +88,8 @@ SELECT * FROM PRODUCT ORDER BY PRICE DESC;
 - P_DTAE 별로 그룹화 하여 P_DATE별로 생산된 제품의 평균가격을 조회하시오.
 - 평균가격과 P_DATE칼럼을 함께 조회하시오
 
+![image](image/PRODUCT2.png)
+
 ## 정답
 ```SQL
 SELECT P_DATE, AVG(PRICE)
