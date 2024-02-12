@@ -85,3 +85,134 @@ public class Solution {
 (2) : money
 (3) : money += after;
 ```
+
+# 3. 홀짝 구분하기
+```
+자연수 n이 입력으로 주어졌을 때 만약 n이 짝수이면 "n is even"을, 홀수이면 "n is odd"를 출력하는 코드를 작성해 보세요.
+```
+
+### 코드
+```java
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+         /////////////////////////////////
+        코드 작성하기
+        /////////////////////////////////
+       
+    }
+}
+```
+
+### 정답
+```java
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        if( n % 2 != 0){
+            System.out.println(n+" is odd");
+        } else {
+            System.out.println(n +" is even");
+        }
+    }
+}
+```
+
+# 4. 문자열 돌리기
+```
+문자열 str이 주어집니다.
+문자열을 시계방향으로 90도 돌려서 아래 입출력 예와 같이 출력하는 코드를 작성해 보세요.
+
+<<입출력 예>>
+입력
+abcde
+
+출력
+a
+b
+c
+d
+e
+```
+
+### 코드
+```java
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        /////////////////////////////////
+        코드 작성하기
+        /////////////////////////////////
+    }
+}
+```
+
+### 정답
+```java
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        
+        for(int i = 0; i < a.length(); i++){
+            System.out.println(a.charAt(i));
+        }
+    }
+}
+```
+
+# 5. 문자 리스트를 문자열로 변환하기
+```
+문자들이 담겨있는 배열 arr가 주어집니다.
+arr의 원소들을 순서대로 이어 붙인 문자열을 return 하는 solution함수를 작성해 주세요.
+```
+
+### 제한사항
+- 1 ≤ arr의 길이 ≤ 200
+    - arr의 원소는 전부 알파벳 소문자로 이루어진 길이가 1인 문자열입니다.
+
+```
+입출력 예
+arr	            result
+["a","b","c"]	"abc"
+```
+
+### 코드
+```java
+class Solution {
+    public String solution(String[] arr) {
+        String answer = "";
+         /////////////////////////////////
+        코드 작성하기
+        /////////////////////////////////
+        return answer;
+    }
+}
+```
+
+### 정답
+```java
+class Solution {
+    public String solution(String[] arr) {
+        String answer = "";
+        
+        for(int i = 0; i < arr.length; i++){
+            answer += arr[i];
+        } 
+        return answer;
+    }
+}
+```
