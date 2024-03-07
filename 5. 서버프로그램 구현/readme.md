@@ -335,6 +335,66 @@ public class MemberController extends HttpServlet {
 
 /**** member_list.jsp ****/
 
+<% 
+	//회원목록 가져오기
+	List<MemberVO> member_list =MemberDAO.getInstance().dao.selectList();
+%>
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+	<style>
+		table{border:1px solid black;
+		      border-collapse:collapse;}
+	</style>
+
+</head>
+
+<body>
+	<table border="1">		
+		<caption>::회원목록::</caption>
+		
+		<tr>
+			<th>회원번호</th>
+			<th>이름</th>
+			<th>아이디</th>
+			<th>비밀번호</th>
+			<th>이메일</th>
+			<th>주소</th>
+			<th>비고</th>
+		</tr>
+		
+		<% 
+		for(int i = 0; i < member_list.size(); i++){ 
+			MemberVO vo = member_list.get(i);
+		%>
+		
+		<tr>
+			<td><%= vo.getIdx()%></td>
+			<td><%= vo.getName()%></td>
+			<td><%= vo.getId()%></td>
+			<td><%= vo.getPwd()%></td>
+			<td><%= vo.getEmail()%></td>
+			<td><%= vo.getAddr()%></td>
+			
+			
+			<td>
+				<input type=button value="삭제" onclick="del('<%= vo.getIdx() %>')"/>
+			</td>
+		</tr>
+		
+		<% }%>
+	</table>
+	
+		<input type="button" value="추가" onclick="location.href='member_register_form.jsp';">	
+	
+</body>
+
+</html>
+
 ```
 
 
