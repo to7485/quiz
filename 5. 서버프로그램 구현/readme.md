@@ -2,10 +2,11 @@
 - 프로젝트명 : ServerProgram1
 - 통합개발환경 : eclipse
 - WAS : tomcat
+- 필요한 라이브러리 : taglibs-standard-impl-1.2.5.jar, taglibs-standard-spec-1.2.5.jar,ojdbc5.jar
+	- 필요한 라이브러리는 각각 톰캣과 오라클 폴더에서 가져오던지, mvnrepository에서 다운로드 하세요.
 
 ### 답안제출방식
 - 프로젝트를 추가한 eclipse화면을 캡쳐하여 제출하시오.
-
 
 ### 정답
 ![image](image/1-1.png)
@@ -118,12 +119,11 @@ public class MemberDTO {
 package db.util;
 
 public interface DBConfig {
-	public final String driver = "oracle.jdbc.OracleDriver";
+	public final String driver = "oracle.jdbc.driver.OracleDriver";
 	public final String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	public final String user = "hr";
 	public final String password = "hr";
 }
-
 
 /***** DBConnector.java *****/
 package db.util;
@@ -132,6 +132,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DBConnector {
 
@@ -141,9 +142,16 @@ public class DBConnector {
 		try {
 			Class.forName(DBConfig.driver);
 			con = DriverManager.getConnection(DBConfig.url,DBConfig.user, DBConfig.password);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+			
+			System.out.println("[Database 연결 성공]");
+			
+		} catch (SQLException e) {
+			System.out.println("[SQL Error : " + e.getMessage() +"]");
+		} catch (ClassNotFoundException e1) {
+
+            System.out.println("[JDBC Connector Driver Error : " + e1.getMessage() + "]");
+        }
+
 	}
 	
 	public static DBConnector getInstance() {
@@ -171,9 +179,7 @@ public class DBConnector {
 		}
 	}
 }
-
 ```
-
 
 3. dao패키지를 만들고 DB 처리를 담당하는 MemberDAO 클래스를 싱글톤으로 구현하시오
 
@@ -223,15 +229,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDAO;
 
-@WebServlet("member_list")
+@WebServlet("/member_list")
 public class MemberController extends HttpServlet {
 
-	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		MemberDAO dao = MemberDAO.getInstance();
 		
-		req.getRequestDispatcher("member_list.jsp").forward(req, resp);
 	}
 }
 ```
@@ -334,16 +337,13 @@ public class MemberController extends HttpServlet {
 }
 
 /**** member_list.jsp ****/
-
-<% 
-	//회원목록 가져오기
-	List<MemberVO> member_list =MemberDAO.getInstance().dao.selectList();
-%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset=UTF-8">
 <title>Insert title here</title>
 
 	<style>
@@ -367,26 +367,21 @@ public class MemberController extends HttpServlet {
 			<th>비고</th>
 		</tr>
 		
-		<% 
-		for(int i = 0; i < member_list.size(); i++){ 
-			MemberVO vo = member_list.get(i);
-		%>
+		<c:forEach var="dto" items="${list}">
 		
 		<tr>
-			<td><%= vo.getIdx()%></td>
-			<td><%= vo.getName()%></td>
-			<td><%= vo.getId()%></td>
-			<td><%= vo.getPwd()%></td>
-			<td><%= vo.getEmail()%></td>
-			<td><%= vo.getAddr()%></td>
-			
-			
+			<td>${ dto.idx}</td>
+			<td>${ dto.name}</td>
+			<td>${ dto.id}</td>
+			<td>${ dto.pwd}</td>
+			<td>${ dto.email}</td>
+			<td>${ dto.addr}</td>
+					
 			<td>
-				<input type=button value="삭제" onclick="del('<%= vo.getIdx() %>')"/>
+				<input type=button value="삭제" onclick=""/>
 			</td>
 		</tr>
-		
-		<% }%>
+		</c:forEach>
 	</table>
 	
 		<input type="button" value="추가" onclick="location.href='member_register_form.jsp';">	
@@ -394,7 +389,6 @@ public class MemberController extends HttpServlet {
 </body>
 
 </html>
-
 ```
 
 
