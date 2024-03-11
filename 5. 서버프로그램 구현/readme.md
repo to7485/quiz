@@ -93,7 +93,7 @@ public class MemberDTO {
 		return email;
 	}
 
-	public String setAddr(String addr){
+	public void setAddr(String addr){
 		this.addr = addr;
 	}
 }
