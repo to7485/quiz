@@ -208,7 +208,7 @@ public class MemberDAO {
 ```
 
 
-1.  MemberController 서블릿을 구현하시오. URL매핑값으로 membeer_list를 사용하시오.
+1. controller패키지를 만들고 MemberController 서블릿을 구현하시오. URL매핑값으로 member_list를 사용하시오.
 
 ```java
 package controller;
