@@ -99,9 +99,7 @@ SELECT * FROM MEMBER ORDER BY IDX DESC;
 
 # 8. MEMBER 테이블에서 다음 조건을 만족하는 데이터를 조회하시오.
 ### 조건
-- 인천의 사는 사람이 몇명인지 조회하시오
-
-![image](../image/member2.png)
+- 인천의 사는 사람이 몇명인지 조회하는 코드를 작성하세요
 
 ## 정답
 ```SQL
