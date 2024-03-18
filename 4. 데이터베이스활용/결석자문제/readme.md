@@ -81,7 +81,7 @@ WHERE NAME = '아이작';
 
 # 6. MEMBER 테이블에서 다음과 같이 데이터를 조회하시오.
 
-![image](../image/member1.png)
+![image](../image/member2.png)
 
 ### 정답
 ```sql
