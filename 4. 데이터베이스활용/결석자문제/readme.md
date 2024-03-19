@@ -65,7 +65,7 @@ insert into member values( seq_member_idx.nextVal,'아이작', 'issac123','1234'
 ### 정답
 ```sql
 UPDATE MEMBER SET
-NAME = '스미스'
+NAME = '제임스'
 WHERE IDX = 12;
 ```
 
