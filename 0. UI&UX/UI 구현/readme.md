@@ -152,5 +152,181 @@
 ## 정답
 - login.html
 ```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div id="index.html" class="logo"></div>
+        <header>
+            <section>
+                <form id="login-form" method="post" action="index.html">
+                    <div>
+                        <input type="radio" name="userType" value="student" id="student">
+                        <label for="student">학생</label>
+                        <input type="radio" name="userType" value="member" id="member">
+                        <label for="member">회원</label>
+                    </div>
+                    <div>
+                        <input type="text" id="id" placeholder="아이디">
+                        <label for="id">아이디</label>
+                    </div>
+                    <div>
+                        <input type="password" id="password" placeholder="비밀번호">
+                        <label for="password">비밀번호</label>
+                    </div>
+                    <button class="login-btn" type="submit">로그인</button>
+                </form>
+            </section>
+        </header>
+        <footer>
+            <div class="find">
+                <p class="footer-title">소중한 정보는 여기 있습니다.</p>
+                <p>아이디/비밀번호를 잊으셨을 때는 아래의 링크를 사용하세요.</p>
+                <a href="#" class="footer-link">아이디 찾기</a>
+                <a href="#" class="footer-link">비밀번호 찾기</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+```
 
+- login.css
+```css
+/* 공통 스타일 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "맑은 고딕", sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #f5f6fa;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+header {
+    margin: 0 auto;
+}
+
+.logo {
+    width: 100%;
+    height: 80px;
+    background: url("logo.png") no-repeat center;
+    background-size: auto;
+}
+
+form {
+    width: 100%;
+    padding: 0 5%;
+    padding-top: 16px;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    background-color: crimson;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer a {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: blue;
+}
+
+.id_init {
+    display: none;
+}
+
+.id_fail {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+}
+
+.id_success {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: blue;
+}
+
+```
+- login.js
+```js
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("login-form");
+    const idInput = document.getElementById("id");
+    const pwInput = document.getElementById("pw");
+    const idMsg = document.getElementById("id_msg");
+
+    loginForm.addEventListener("submit", function (event) {
+        if (idInput.value === "") {
+            alert("아이디를 입력하세요.");
+            idInput.focus();
+            event.preventDefault();
+            return false;
+        } else if (pwInput.value === "") {
+            alert("비밀번호를 입력하세요.");
+            pwInput.focus();
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    idInput.addEventListener("keyup", function () {
+        if (idInput.value.length === 0) {
+            idMsg.classList.remove("id_success", "id_fail");
+            idMsg.classList.add("id_init");
+            idMsg.textContent = "아이디를 입력해주세요.";
+        } else if (idInput.value.length < 4) {
+            idMsg.textContent = "아이디는 4자 이상입니다.";
+            idMsg.classList.remove("id_init", "id_success");
+            idMsg.classList.add("id_fail");
+        } else {
+            idMsg.textContent = "정상적인 아이디입니다.";
+            idMsg.classList.remove("id_init", "id_fail");
+            idMsg.classList.add("id_success");
+        }
+    });
+});
 ```
