@@ -216,3 +216,50 @@ class Solution {
     }
 }
 ```
+## 6. 1부터 N까지의 총합 구하는 방식 3가지를 작성하세요
+```java
+class Sol{
+ 
+}
+
+public class Sum_exam {
+	public static void main(String[] args) {
+		Sol sol = new Sol();
+
+	}
+}
+```
+
+### 해답
+```java
+package exam_java;
+
+//1부터 n까지의 합을 구하는 방법을 3개 만드세요
+public class Sum_exam {
+
+	//1. 반복문으로 만드는 방
+	public int solution1(int N) {
+		int sum = 0;
+		for(int i = 1; i <= N; i++) {
+			sum += i;
+		}
+		return sum;
+	}
+
+	//2. 재귀함수를 이용해서 만드는 방
+	public int solution2(int N) {
+		if(N == 1)
+			return 1;
+		return N + solution2(N-1);
+	}
+	
+	//공식을 사용하
+	public int solution3(int N) {
+	    return N * (N + 1) / 2;
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}
+```
